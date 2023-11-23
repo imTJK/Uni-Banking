@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\ueb01">
+      <UniqueIdentifier>{882116f1-48d0-4282-9d32-df0df1c75dbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ueb02">
+      <UniqueIdentifier>{852052b0-94aa-4ece-b214-c984ebebb381}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ueb01">
+      <UniqueIdentifier>{a0cc2017-948e-43e6-952f-38af706775fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ueb02">
+      <UniqueIdentifier>{c35311cd-32e1-4bf9-a96d-d330f6ca7491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ueb03">
+      <UniqueIdentifier>{63c4b0a0-e94b-49df-8075-f710ad3315d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ueb03">
+      <UniqueIdentifier>{8878e598-a376-400a-ad34-624feb34f4bd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb02\caccount.cpp">
+      <Filter>Source Files\ueb02</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb02\caddress.cpp">
+      <Filter>Source Files\ueb02</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb02\ccustomer.cpp">
+      <Filter>Source Files\ueb02</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb02\cmoney.cpp">
+      <Filter>Source Files\ueb02</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb02\ueb02.cpp">
+      <Filter>Source Files\ueb02</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb01\cdate.cpp">
+      <Filter>Source Files\ueb01</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb01\ctime.cpp">
+      <Filter>Source Files\ueb01</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb01\ueb01.cpp">
+      <Filter>Source Files\ueb01</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb03\cbank.cpp">
+      <Filter>Source Files\ueb03</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb03\ccurrentaccount.cpp">
+      <Filter>Source Files\ueb03</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb03\csavingsaccount.cpp">
+      <Filter>Source Files\ueb03</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb03\ueb03.cpp">
+      <Filter>Source Files\ueb03</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ueb02\caddress.hpp">
+      <Filter>Header Files\ueb02</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb02\ccustomer.hpp">
+      <Filter>Header Files\ueb02</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb02\cmoney.hpp">
+      <Filter>Header Files\ueb02</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb02\caccount.hpp">
+      <Filter>Header Files\ueb02</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb01\ctime.hpp">
+      <Filter>Header Files\ueb01</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb01\ueb01.hpp">
+      <Filter>Header Files\ueb01</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb01\cdate.hpp">
+      <Filter>Header Files\ueb01</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb03\cbank.hpp">
+      <Filter>Header Files\ueb03</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb03\ccurrentaccount.hpp">
+      <Filter>Header Files\ueb03</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb03\csavingsaccount.hpp">
+      <Filter>Header Files\ueb03</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb03\ueb03.hpp">
+      <Filter>Header Files\ueb03</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb02\ueb02.hpp">
+      <Filter>Header Files\ueb02</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
