@@ -14,6 +14,9 @@
 #include "cbank.hpp"
 
 class CAccount {
+	private:
+	    friend class CFixedDepositAccount;
+
     protected:
         std::string iban_;
         CMoney balance_;
@@ -28,17 +31,21 @@ class CAccount {
         // Destructors
         ~CAccount();
 
+		// -- Methods --
         // Setter
 	    void set_iban(std::string iban)       { iban_ = std::move(iban);       }
         void set_balance(CMoney balance)      { balance_ = std::move(balance); }
         void set_customer(CCustomer customer) { customer_ = &customer;         }
-        void set_bank(CBank bank)             { bank_ = &bank;                 };
+        void set_bank(CBank bank)             { bank_ = &bank;                 }
 
         // Getter
         std::string get_iban() const   { return iban_;      }
         CMoney get_balance() const     { return balance_;   }
         CCustomer get_customer() const { return *customer_; }
-        CBank get_bank() const         { return *bank_;     };
+        CBank get_bank() const         { return *bank_;     }
+
+        // Misc
+        static void load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
 
         // Display
         void print_iban() const;

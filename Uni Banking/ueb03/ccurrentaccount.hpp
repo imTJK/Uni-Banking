@@ -9,12 +9,19 @@ class CCurrentAccount : private CAccount
 		CMoney* disposit_;
 
 	public:
+		using CAccount::print_iban;
+
 		// Constructors
 		CCurrentAccount(CBank*, std::string, CCustomer*, CMoney, CMoney*);
+		CCurrentAccount();
 
 		// Destructors
 		~CCurrentAccount();
 
+		// -- Methods -- 
+		// Misc
+		static void load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
+			
 		// Display
 		void print() const;
 };

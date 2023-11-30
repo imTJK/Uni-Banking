@@ -21,10 +21,22 @@ class CBank
 	std::vector<CAccount*> account_list_;
 
 	public:
+		// Constructors
+		
 		CBank(std::string, std::string);
 
+		// Destructors
+		~CBank();
+
+
 		// -- Methods --
+		// Getter
+		std::string get_bic() { return bic_; }
+
+		// Misc
 		void add_account(CAccount *);
+		void load(std::ifstream *);
+
 
 		// Display
 		void print() const;

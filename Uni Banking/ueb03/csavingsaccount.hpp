@@ -10,9 +10,14 @@ class CSavingsAccount : private CAccount
 	public:
 		// Constructors
 		CSavingsAccount(CBank*, std::string, CCustomer*, CMoney, double);
+		CSavingsAccount();
 
 		// Destructors
 		~CSavingsAccount();
+
+		// -- Methods --
+		// Misc
+		static void load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
 
 		// Display
 		void print() const;

@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\Programming\CPP\Uni\Uni Banking\Uni Banking\ueb01;D:\Programming\CPP\Uni\Uni Banking\Uni Banking\ueb02;D:\Programming\CPP\Uni\Uni Banking\Uni Banking\ueb03;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Programming\CPP\Uni\Uni Banking\Uni Banking\ueb01;D:\Programming\CPP\Uni\Uni Banking\Uni Banking\ueb02;D:\Programming\CPP\Uni\Uni Banking\Uni Banking\ueb03;D:\Programming\CPP\Uni\Uni Banking\Uni Banking\ueb04;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -111,6 +111,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>D:\Programming\CPP\Uni\Uni Banking\Uni Banking\externals\pugixml-1.14;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -143,6 +144,9 @@
     <ClCompile Include="ueb03\ccurrentaccount.cpp" />
     <ClCompile Include="ueb03\csavingsaccount.cpp" />
     <ClCompile Include="ueb03\ueb03.cpp" />
+    <ClCompile Include="ueb04\cbankmanager.cpp" />
+    <ClCompile Include="ueb04\cfixeddepositaccount.cpp" />
+    <ClCompile Include="ueb04\xml_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ueb01\cdate.hpp" />
@@ -157,6 +161,12 @@
     <ClInclude Include="ueb03\ccurrentaccount.hpp" />
     <ClInclude Include="ueb03\csavingsaccount.hpp" />
     <ClInclude Include="ueb03\ueb03.hpp" />
+    <ClInclude Include="ueb04\cbankmanager.hpp" />
+    <ClInclude Include="ueb04\cfixeddespositaccount.hpp" />
+    <ClInclude Include="ueb04\xml_utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="resources\ueb04\data.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
