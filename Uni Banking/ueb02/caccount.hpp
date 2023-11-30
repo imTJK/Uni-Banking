@@ -8,10 +8,14 @@
 #ifndef caccount_hpp
 #define caccount_hpp
 
-#include <string>
 #include "cmoney.hpp"
 #include "ccustomer.hpp"
-#include "cbank.hpp"
+
+#include <string>
+#include <vector>
+
+// Forward declarations, include respective .h in main-file
+class CBank;
 
 class CAccount {
     protected:
@@ -28,17 +32,21 @@ class CAccount {
         // Destructors
         ~CAccount();
 
+		// -- Methods --
         // Setter
-	    void set_iban(std::string iban)       { iban_ = std::move(iban);       }
-        void set_balance(CMoney balance)      { balance_ = std::move(balance); }
-        void set_customer(CCustomer customer) { customer_ = &customer;         }
-        void set_bank(CBank bank)             { bank_ = &bank;                 };
+        void set_iban(std::string iban) { iban_ = std::move(iban); }
+        void set_balance(CMoney balance);
+        void set_customer(CCustomer customer);
+        void set_bank(CBank bank);
 
         // Getter
         std::string get_iban() const   { return iban_;      }
-        CMoney get_balance() const     { return balance_;   }
-        CCustomer get_customer() const { return *customer_; }
-        CBank get_bank() const         { return *bank_;     };
+        CMoney get_balance() const;
+        CCustomer get_customer() const;
+        CBank get_bank() const;
+
+        // Misc
+        static CAccount* load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
 
         // Display
         void print_iban() const;

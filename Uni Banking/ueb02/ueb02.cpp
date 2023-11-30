@@ -10,7 +10,7 @@ using namespace std;
 #include "caccount.hpp"
 #include "ccustomer.hpp"
 
-int ueb02()
+void ueb02()
 {
    CTime Jetzt, SUBeginn(16, 0);
    CDate Heute, Geburtsdatum(7, 7, 1977);
@@ -45,7 +45,5 @@ int ueb02()
 
    cout << "Daten des Konto 2:" << endl;
    //Konto2.print();
-   cout << endl << endl;
-
-   return 0;
+   cout << endl << endl; 
 }

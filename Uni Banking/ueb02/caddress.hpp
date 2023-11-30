@@ -8,7 +8,6 @@
 #ifndef caddress_hpp
 #define caddress_hpp
 
-#include <stdio.h>
 #include <string>
 
 class CAddress {

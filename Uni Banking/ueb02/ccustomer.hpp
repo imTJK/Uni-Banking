@@ -9,16 +9,19 @@
 #define ccustomer_hpp
 
 // Local Imports
-#include "cdate.hpp"
 #include "caddress.hpp"
+#include "cdate.hpp"
 
 // Standard Imports
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <fstream>
 
 // Forward declarations, include respective .h in main-file
-class CAccount; // caccount.h
+class CAccount;
+
+
 
 class CCustomer {
     long id_;
@@ -28,8 +31,13 @@ class CCustomer {
     std::vector<CAccount *> account_list_;
     
     public:
+		// Constructors
         CCustomer(long, std::string, CDate, CAddress);
-    
+        CCustomer();
+
+		// Destructors
+        ~CCustomer();
+
         // Setter
         void set_id(long const new_id)                                 { id_ = new_id;                                }
         void set_name(std::string new_name)                            { name_ = std::move(new_name);                 }
@@ -45,6 +53,7 @@ class CCustomer {
         std::vector<CAccount*> get_account_list() const { return account_list_; }
         
         // -- Methods --
+        void load(std::ifstream *);
         void add_account(CAccount *);
         
         // Display

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "caccount.hpp"
+#include <vector>
 
 class CSavingsAccount : private CAccount
 {
@@ -13,6 +14,10 @@ class CSavingsAccount : private CAccount
 
 		// Destructors
 		~CSavingsAccount();
+
+		// -- Methods --
+		// Misc
+		static void load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
 
 		// Display
 		void print() const;

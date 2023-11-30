@@ -7,7 +7,8 @@
 
 #include "cbank.hpp"
 #include "caccount.hpp"
-#include <iostream>
+#include "ccustomer.hpp"
+#include "xml_utils.h"
 #include <iomanip>
 
 using namespace std;
@@ -17,36 +18,41 @@ CBank::CBank(string name, string bic)
 	:name_(move(name)), bic_(move(bic))
 {};
 
+
 // Methods
 void CBank::add_account(CAccount* account_ptr)
 {
 	account_list_.push_back(account_ptr);
 }
 
+void CBank::load(std::ifstream* file)
+{
+	std::string line;
+	std::getline(*file, line);
+
+	// Iterates over each bank element, line by line
+	while (line.find("</Bank") == std::string::npos)
+	{
+		if (line.find("<Name>") != std::string::npos) { name_ = get_value(&line); }
+		else if (line.find("<BIC>") != std::string::npos) { bic_ = get_value(&line); }
+
+		std::getline(*file, line);
+	}
+}
+
+
 // Display 
 void CBank::print() const
 {
-	printf("%s \n BLZ %s \n Anzahl Konten: %llu \n Kontenliste: \n", name_.c_str(), bic_.c_str(), account_list_.size());
-	printf(" IBAN \t\t\t | Kundenname \t | Anz. Buchungen \t | Kontostand \t");
-	printf("\n ------------------------|---------------|-----------------------|----------");
+	// It's not pretty, but it works
+	printf("%s \nBLZ %s \nAnzahl Konten: %llu \nKontenliste: \n", name_.c_str(), bic_.c_str(), account_list_.size());
+	printf("IBAN                   | Kundenname     | Anz. Buchungen | Kontostand \n");
+	printf("-----------------------|----------------|----------------|---------------");
 
 	for (auto const& element : account_list_) {
-		printf("\n ");
+		printf("\n");
 		element->print_iban();
-		cout
-			<< setfill(' ')
-			<< left
-			<< setw(22)
-			<< element->get_customer().get_name()
-			<< "|"
-			<<
-
-
-
-
-		printf("\n ");
-		element->print_iban();
-		printf(" | %s   | 0 \t\t\t | ", element->get_customer().get_name().c_str());
+		printf("| %-14.14s | %14i | ", element->get_customer().get_name().c_str(), 0);
 		element->get_balance().print();
 	}
 }

@@ -31,6 +31,15 @@
     <Filter Include="Header Files\ueb03">
       <UniqueIdentifier>{8878e598-a376-400a-ad34-624feb34f4bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ueb04">
+      <UniqueIdentifier>{14b2d2ac-0f10-4199-9c98-daf5f6bf7fa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ueb04">
+      <UniqueIdentifier>{c04936e1-9998-4109-ac17-8c29f69a5804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\ueb04">
+      <UniqueIdentifier>{ca6bf34d-e8d8-4be7-a1bf-ecba76eda9a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,8 +78,20 @@
     <ClCompile Include="ueb03\csavingsaccount.cpp">
       <Filter>Source Files\ueb03</Filter>
     </ClCompile>
+    <ClCompile Include="ueb04\cbankmanager.cpp">
+      <Filter>Source Files\ueb04</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb04\cfixeddepositaccount.cpp">
+      <Filter>Source Files\ueb04</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb04\xml_utils.cpp">
+      <Filter>Source Files\ueb04</Filter>
+    </ClCompile>
     <ClCompile Include="ueb03\ueb03.cpp">
       <Filter>Source Files\ueb03</Filter>
+    </ClCompile>
+    <ClCompile Include="ueb04\ueb04.cpp">
+      <Filter>Source Files\ueb04</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,5 +131,22 @@
     <ClInclude Include="ueb02\ueb02.hpp">
       <Filter>Header Files\ueb02</Filter>
     </ClInclude>
+    <ClInclude Include="ueb04\cbankmanager.hpp">
+      <Filter>Header Files\ueb04</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb04\cfixeddespositaccount.hpp">
+      <Filter>Header Files\ueb04</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb04\xml_utils.h">
+      <Filter>Header Files\ueb04</Filter>
+    </ClInclude>
+    <ClInclude Include="ueb03\ueb04.hpp">
+      <Filter>Header Files\ueb04</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="resources\ueb04\data.xml">
+      <Filter>Resource Files\ueb04</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
