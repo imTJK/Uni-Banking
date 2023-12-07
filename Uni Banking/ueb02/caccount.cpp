@@ -45,8 +45,8 @@ void CAccount::set_bank(CBank bank) { bank_ = &bank; }
 
 // Getter
 CMoney CAccount::get_balance() const { return balance_; }
-CCustomer CAccount::get_customer() const { return *customer_; }
-CBank CAccount::get_bank() const { return *bank_; }
+CCustomer* CAccount::get_customer() const { return customer_; }
+CBank* CAccount::get_bank() const { return bank_; }
 
 // Misc
 CAccount* CAccount::load(std::ifstream * file, std::vector<CBank*> *bank_list, std::vector<CCustomer*> *customer_list)
@@ -67,23 +67,20 @@ CAccount* CAccount::load(std::ifstream * file, std::vector<CBank*> *bank_list, s
 		std::getline(*file, line);
 	}
 
-	CCustomer customer = *find_customer_from_id(customer_list, &customer_id);
-	CBank bank = *find_bank_from_bic(bank_list, &bank_bic);
-	auto money = CMoney(amount, currency);
+	CCustomer* customer = find_customer_from_id(customer_list, &customer_id);
+	CBank* bank = find_bank_from_bic(bank_list, &bank_bic);
+	auto const money = CMoney(amount, currency);
 
-	auto account = new CAccount(&bank, iban, &customer, money);
-
-	customer.add_account(account);
-	bank.add_account(account);
+	auto const account = new CAccount(bank, iban, customer, money);
 	return account;
 }
 
 // Display
 void CAccount::print_iban() const
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 6; i++)
 	{
-		printf("%s ", iban_.substr(i + i * 4, 4).c_str());
+		printf("%s ", iban_.substr( i * 4, 4).c_str());
 	}
 }
 

@@ -1,4 +1,4 @@
-﻿//
+﻿ //
 //  cbank.cpp
 //  Uni Banking
 //
@@ -18,12 +18,19 @@ CBank::CBank(string name, string bic)
 	:name_(move(name)), bic_(move(bic))
 {};
 
+// Destructors
+CBank::~CBank()
+{
+	printf("Bank %s wird vernichtet.", name_.c_str());
+}
+
 
 // Methods
 void CBank::add_account(CAccount* account_ptr)
 {
 	account_list_.push_back(account_ptr);
 }
+
 
 void CBank::load(std::ifstream* file)
 {
@@ -46,13 +53,14 @@ void CBank::print() const
 {
 	// It's not pretty, but it works
 	printf("%s \nBLZ %s \nAnzahl Konten: %llu \nKontenliste: \n", name_.c_str(), bic_.c_str(), account_list_.size());
-	printf("IBAN                   | Kundenname     | Anz. Buchungen | Kontostand \n");
-	printf("-----------------------|----------------|----------------|---------------");
+	printf("IBAN                        | Kundenname     | Anz. Buchungen | Kontostand \n");
+	printf("----------------------------|----------------|----------------|---------------\n");
 
 	for (auto const& element : account_list_) {
-		printf("\n");
 		element->print_iban();
-		printf("| %-14.14s | %14i | ", element->get_customer().get_name().c_str(), 0);
+		printf("| %-14.14s | %14i | ", element->get_customer()->get_name().c_str(), 0);
+
 		element->get_balance().print();
+		printf("\n");
 	}
 }

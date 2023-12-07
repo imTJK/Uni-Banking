@@ -21,6 +21,11 @@ CCustomer::CCustomer(long n_id, std::string name, CDate birthday, CAddress addre
 :id_(n_id), name_(std::move(name)), birthday_(birthday), address_(std::move(address)), account_list_(NULL)
 {}
 
+// Destructor
+CCustomer::~CCustomer()
+{
+	printf("Kunde %s (Kundennr. %ld) wird vernichtet.", name_.c_str(), id_);
+}
 
 // -- Custom Methods --
 // Add Account to Customer
@@ -60,7 +65,7 @@ void CCustomer::print() const {
     printf("\nKonten:");
     
     for (auto const & element : account_list_) {
-        printf("\n- Kontonr.: "); element->print_iban();
+		printf("\n- Kontonr.: "); element->print_iban();
     }
 }
 

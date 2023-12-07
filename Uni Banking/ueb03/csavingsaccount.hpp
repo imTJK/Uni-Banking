@@ -17,7 +17,7 @@ class CSavingsAccount : private CAccount
 
 		// -- Methods --
 		// Misc
-		static void load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
+		static CSavingsAccount* load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
 
 		// Display
 		void print() const;

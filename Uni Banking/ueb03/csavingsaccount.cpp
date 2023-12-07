@@ -13,7 +13,8 @@
 
 // Constructors
 CSavingsAccount::CSavingsAccount(CBank* bank, std::string iban, CCustomer* customer, CMoney balance, double interest_rate)
-	:CAccount(bank, std::move(iban), customer, std::move(balance)), interest_rate_(interest_rate) {};
+	:CAccount(bank, std::move(iban), customer, std::move(balance)), interest_rate_(interest_rate)
+{};
 
 
 // Destructors
@@ -22,7 +23,7 @@ CSavingsAccount::~CSavingsAccount()
 	printf("CSavingsAccount: \t Konto ("); print_iban(); printf(") wird vernichtet! \n");
 }
 
-void CSavingsAccount::load(std::ifstream* file, std::vector<CBank*>* bank_list, std::vector<CCustomer*>* customer_list)
+CSavingsAccount* CSavingsAccount::load(std::ifstream* file, std::vector<CBank*>* bank_list, std::vector<CCustomer*>* customer_list)
 {
 	long customer_id, amount = 0;
 	double interest_rate = 0;
@@ -30,7 +31,7 @@ void CSavingsAccount::load(std::ifstream* file, std::vector<CBank*>* bank_list, 
 
 	std::getline(*file, line);
 
-	while (line.find("</Account") == std::string::npos)
+	while (line.find("</SavingsAccount") == std::string::npos)
 	{
 		if (line.find("<IBAN>") != std::string::npos)              { iban = get_value(&line);                     }
 		else if (line.find("<Customer>") != std::string::npos)     { customer_id = std::stol(get_value(&line));   }
@@ -46,16 +47,13 @@ void CSavingsAccount::load(std::ifstream* file, std::vector<CBank*>* bank_list, 
 	auto const bank = find_bank_from_bic(bank_list, &bank_bic);
 
 	auto const savings_account = new CSavingsAccount(bank, iban, customer, CMoney(amount, currency), interest_rate);
-
-	customer->add_account(savings_account);
-	bank->add_account(savings_account);
+	return savings_account;
 }
 
 
 // Display
 void CSavingsAccount::print() const
 {
-	CAccount::print();
 	printf("\nSparzinsen: %f %%", interest_rate_);
 }
 

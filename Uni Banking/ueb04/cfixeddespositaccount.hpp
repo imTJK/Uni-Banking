@@ -8,8 +8,8 @@ class CFixedDepositAccount : private CCurrentAccount, private CSavingsAccount {
 
 		~CFixedDepositAccount();
 
-	// -- Methods --
-	// Misc
-	static void load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
+		// -- Methods --
+		// Misc
+		static CFixedDepositAccount* load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
 
 };

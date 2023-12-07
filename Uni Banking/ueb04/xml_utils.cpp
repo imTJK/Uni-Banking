@@ -6,8 +6,9 @@
 // Lambda to find get values from xml file
 std::string get_value(const std::string* line)
 	{
-		return line->substr(line->find('>') + 1, line->find("</ID>") - line->find('>') - 1);
+		return line->substr(line->find('>') + 1, line->find("</") - line->find('>') - 1);
 	};
+
 
 CCustomer* find_customer_from_id(const std::vector<CCustomer*>* customer_list, const long* id) {
 	// Will always find a value in given data, but exceptions could occur

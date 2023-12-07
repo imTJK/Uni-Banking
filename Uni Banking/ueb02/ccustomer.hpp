@@ -50,7 +50,7 @@ class CCustomer {
         std::string get_name() const                    { return name_;         }
         CAddress get_address() const                    { return address_;      }
         CDate get_birthday() const                      { return birthday_;        }
-        std::vector<CAccount*> get_account_list() const { return account_list_; }
+        std::vector<CAccount*>* get_account_list()      { return &account_list_; }
         
         // -- Methods --
         void load(std::ifstream *);

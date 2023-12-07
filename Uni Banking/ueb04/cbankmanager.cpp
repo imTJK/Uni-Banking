@@ -6,10 +6,17 @@
 #include "csavingsaccount.hpp"
 #include "cfixeddespositaccount.hpp"
 
+
 #include <iostream>
+#include <typeinfo>
 #include <fstream>
 #include <string>
 #include <vector>
+
+CAccount* temp_account;
+CCurrentAccount* temp_current_account;
+CSavingsAccount* temp_savings_account;
+CFixedDepositAccount* temp_fixed_deposit_account;
 
 CBankManager::CBankManager(std::string filename)
 {
@@ -18,6 +25,7 @@ CBankManager::CBankManager(std::string filename)
 
 	if (file.is_open())
 	{
+		printf("Datei wurde erfolgreich geoeffnet und wird jetzt eingelesen ...\n");
 		// There has to be a better solution than this, right?
 		std::string line;
 
@@ -40,24 +48,25 @@ CBankManager::CBankManager(std::string filename)
 
 			else if (line.find("<Account>") != std::string::npos)
 			{
-				CAccount::load(&file, &bank_list_, &customer_list_);
+				temp_account = CAccount::load(&file, &bank_list_, &customer_list_);
 			}
 
 			else if (line.find("<CurrentAccount>") != std::string::npos)
 			{
-				CCurrentAccount::load(&file, &bank_list_, &customer_list_);
+				temp_current_account = CCurrentAccount::load(&file, &bank_list_, &customer_list_);
 			}
 
 			else if (line.find("<SavingsAccount>") != std::string::npos)
 			{
-				CSavingsAccount::load(&file, &bank_list_, &customer_list_);
+				temp_savings_account = CSavingsAccount::load(&file, &bank_list_, &customer_list_);
 			}
 
 			else if (line.find("<FixedDepositAccount>") != std::string::npos)
 			{
-				CFixedDepositAccount::load(&file, &bank_list_, &customer_list_);
+				temp_fixed_deposit_account = CFixedDepositAccount::load(&file, &bank_list_, &customer_list_);
 			}
 		}
+		printf("Datei wurde eingelesen.\n");
 		file.close();
 	}
 	else
@@ -65,24 +74,45 @@ CBankManager::CBankManager(std::string filename)
 		std::cout << "Failed to open the file: " << filename;
 		_fcloseall();
 	}
-
-
-
-
-
+	
 
 }
+
+CBankManager::~CBankManager()
+{
+	for (auto& element : customer_list_)
+	{
+		element->~CCustomer();
+		printf("\n");
+	}
+
+	// Hacky af
+	temp_account->~CAccount();
+	temp_savings_account->~CSavingsAccount();
+	bank_list_[0]->~CBank();
+	printf("\n");
+
+	temp_current_account->~CCurrentAccount();
+	temp_fixed_deposit_account->~CFixedDepositAccount();
+	bank_list_[1]->~CBank();
+	printf("\n");
+}
+
 
 void CBankManager::print_customer_list() const
 {
 	for (auto const& element : customer_list_) {
+		printf("\n");
 		element->print();
+		printf("\n");
 	}
 }
 
 void CBankManager::print_bank_list() const
 {
 	for (auto const& element : bank_list_) {
+		printf("\n");
 		element->print();
+		printf("\n");
 	}
 }

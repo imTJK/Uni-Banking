@@ -4,7 +4,11 @@
 #include "xml_utils.h"
 
 CFixedDepositAccount::CFixedDepositAccount(CBank* bank, std::string iban, CCustomer* customer, CMoney balance, CMoney* disposit, double interest_rate)
-	:CCurrentAccount(bank, iban, customer, balance, disposit), CSavingsAccount(bank, iban, customer, balance, interest_rate) {}
+	:CCurrentAccount(bank, iban, customer, balance, disposit), CSavingsAccount(bank, iban, customer, balance, interest_rate)
+{
+	bank->get_account_list()->pop_back();
+	customer->get_account_list()->pop_back();
+}
 
 
 CFixedDepositAccount::~CFixedDepositAccount()
@@ -12,14 +16,14 @@ CFixedDepositAccount::~CFixedDepositAccount()
     printf("CFixedDepositAccount: \t Konto ("); CCurrentAccount::print_iban(); printf(") wird vernichtet! \n");
 }
 
-void CFixedDepositAccount::load(std::ifstream* file, std::vector<CBank*>* bank_list, std::vector<CCustomer*>* customer_list){
+CFixedDepositAccount* CFixedDepositAccount::load(std::ifstream* file, std::vector<CBank*>* bank_list, std::vector<CCustomer*>* customer_list){
 	long customer_id, disposit_amount = 0, balance_amount = 0;
 	double interest_rate = 0;
 	std::string bank_bic, line, iban, disposit_currency, balance_currency;
 
 	std::getline(*file, line);
 
-	while (line.find("</Account") == std::string::npos)
+	while (line.find("</FixedDepositAccount") == std::string::npos)
 	{
 		if (line.find("<IBAN>") != std::string::npos)                  { iban = get_value(&line);                           }
 		else if (line.find("<Customer>") != std::string::npos)         { customer_id = std::stol(get_value(&line));    }
@@ -56,8 +60,5 @@ void CFixedDepositAccount::load(std::ifstream* file, std::vector<CBank*>* bank_l
 
 	auto const fixed_deposit_account = new CFixedDepositAccount(bank, iban, customer, balance_money, &disposit_money, interest_rate);
 
-	/*
-	customer->add_account(&fixed_deposit_account);
-	bank->add_account(&fixed_deposit_account);
-	*/
+	return fixed_deposit_account;
 }

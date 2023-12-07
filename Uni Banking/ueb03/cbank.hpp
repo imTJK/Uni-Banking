@@ -25,13 +25,14 @@ class CBank
 		
 		CBank(std::string, std::string);
 
-		/*// Destructors
+		// Destructors
 		~CBank();
-		*/
+		
 
 		// -- Methods --
 		// Getter
 		std::string get_bic() { return bic_; }
+		std::vector<CAccount*>* get_account_list() { return &account_list_; }
 
 		// Misc
 		void add_account(CAccount *);

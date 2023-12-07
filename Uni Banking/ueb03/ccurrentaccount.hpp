@@ -19,7 +19,7 @@ class CCurrentAccount : private CAccount
 
 		// -- Methods -- 
 		// Misc
-		static void load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
+		static CCurrentAccount* load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
 			
 		// Display
 		void print() const;

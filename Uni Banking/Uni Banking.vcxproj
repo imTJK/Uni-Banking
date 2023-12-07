@@ -139,11 +139,15 @@
     <ClCompile Include="ueb02\caddress.cpp" />
     <ClCompile Include="ueb02\ccustomer.cpp" />
     <ClCompile Include="ueb02\cmoney.cpp" />
-    <ClCompile Include="ueb02\ueb02.cpp" />
+    <ClCompile Include="ueb02\ueb02.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ueb03\cbank.cpp" />
     <ClCompile Include="ueb03\ccurrentaccount.cpp" />
     <ClCompile Include="ueb03\csavingsaccount.cpp" />
-    <ClCompile Include="ueb03\ueb03.cpp" />
+    <ClCompile Include="ueb03\ueb03.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ueb04\cbankmanager.cpp" />
     <ClCompile Include="ueb04\cfixeddepositaccount.cpp" />
     <ClCompile Include="ueb04\ueb04.cpp" />

@@ -19,6 +19,9 @@ public:
 	// Constructors
 	CBankManager(std::string);
 
+	// Destructors
+	~CBankManager();
+
 	// -- Methods -
 	// Display
 	void print_customer_list() const;

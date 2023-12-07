@@ -14,16 +14,17 @@
 
 // Constructors
 CCurrentAccount::CCurrentAccount(CBank* bank, std::string iban, CCustomer* customer, CMoney balance, CMoney* disposit)
-	:CAccount(bank, std::move(iban), customer, std::move(balance)), disposit_(disposit) {}
+	:CAccount(bank, std::move(iban), customer, std::move(balance)), disposit_(disposit)
+{}
 
 // Destructors
 CCurrentAccount::~CCurrentAccount()
 {
-	printf("Current Acount say byebye");
+	printf("CCurrentAccount: \t Konto ("); print_iban(); printf(") wird vernichtet! \n");
 }
 
 
-void CCurrentAccount::load(std::ifstream* file, std::vector<CBank*>* bank_list, std::vector<CCustomer*>* customer_list)
+CCurrentAccount* CCurrentAccount::load(std::ifstream* file, std::vector<CBank*>* bank_list, std::vector<CCustomer*>* customer_list)
 {
 		long customer_id;
 		double balance_amount = 0, disposit_amount = 0;
@@ -31,7 +32,7 @@ void CCurrentAccount::load(std::ifstream* file, std::vector<CBank*>* bank_list, 
 
 		std::getline(*file, line);
 
-		while (line.find("</Account") == std::string::npos)
+		while (line.find("</CurrentAccount") == std::string::npos)
 		{
 			if (line.find("<IBAN>") != std::string::npos)          { iban = get_value(&line);                   }
 			else if (line.find("<Customer>") != std::string::npos) { customer_id = std::stol(get_value(&line)); }
@@ -65,14 +66,11 @@ void CCurrentAccount::load(std::ifstream* file, std::vector<CBank*>* bank_list, 
 		auto disposit_money = CMoney(disposit_amount, disposit_currency);
 
 		auto current_account = new CCurrentAccount(bank, iban, customer, balance_money, &disposit_money);
-
-		customer->add_account(current_account);
-		bank->add_account(current_account);
+		return current_account;
 }
 
 // Display
 void CCurrentAccount::print() const
 {
-	CAccount::print();
 	printf("\nDispo\t  : "); disposit_->print();
 }

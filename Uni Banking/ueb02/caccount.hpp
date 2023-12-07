@@ -42,8 +42,8 @@ class CAccount {
         // Getter
         std::string get_iban() const   { return iban_;      }
         CMoney get_balance() const;
-        CCustomer get_customer() const;
-        CBank get_bank() const;
+        CCustomer* get_customer() const;
+        CBank* get_bank() const;
 
         // Misc
         static CAccount* load(std::ifstream*, std::vector<CBank*>*, std::vector<CCustomer*>*);
